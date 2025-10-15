@@ -2,6 +2,8 @@
 
 A Python program that extracts flight price data from Skyscanner email updates and creates visualizations to track price changes over time.
 
+![Flight Prices Plot](flight_prices_plot.png)
+
 ## Features
 
 - Parses Skyscanner price alert emails from an mbox file
@@ -10,6 +12,7 @@ A Python program that extracts flight price data from Skyscanner email updates a
   - English emails with one roundtrip flight
   - English emails with two roundtrip flights
 - Extracts flight details: dates, times, airports, and prices
+- **Date normalization**: Automatically converts Italian dates to English format for consistent grouping
 - Generates a CSV file with all extracted data
 - Creates a line plot showing price trends over time for each flight route
 
@@ -73,6 +76,15 @@ The generated plot shows:
 - Y-axis: Price in EUR
 - Each unique flight combination (same dates and times) is shown as a separate line with a different color
 - Legend shows all tracked flight combinations
+- Dates are normalized to English format for consistent grouping across Italian and English emails
+
+### Example Output
+
+The plot above demonstrates price tracking for round-trip flights between Zurich (ZRH) and Lisbon (LIS). You can see:
+- Multiple flight options tracked over time (September to October 2025)
+- Price trends showing when prices go up or down
+- Different departure/return date combinations as separate lines
+- Clear visualization of the best times to book based on historical price data
 
 ## Example Files
 
@@ -91,8 +103,28 @@ The program:
    - Flight dates and times
    - Airport codes (departure and destination)
    - Prices
-4. Formats the data according to the CSV schema
-5. Creates visualizations using matplotlib
+4. **Normalizes dates**: Converts Italian date names (e.g., "gio 23 ott") to English format (e.g., "Thu, 23 Oct") for consistency
+5. Formats the data according to the CSV schema
+6. Creates visualizations using matplotlib with grouped data by flight combination
+
+## Key Features Explained
+
+### Multi-line Pattern Matching
+The program uses sophisticated pattern matching to extract airport codes that appear on separate lines in the email format:
+```
+10:40 -
+12:35
+
+ZRH -
+LIS,
+```
+
+### Date Normalization
+Italian and English emails are automatically reconciled:
+- Italian: "gio 23 ott" → English: "Thu, 23 Oct"
+- Italian: "mer 29 ott" → English: "Wed, 29 Oct"
+
+This ensures that the same flight tracked through both Italian and English emails appears as a single line in the plot.
 
 ## Troubleshooting
 

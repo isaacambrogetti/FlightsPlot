@@ -133,3 +133,37 @@ If the program doesn't extract data correctly:
 - Check that the emails are from Skyscanner price alerts
 - Ensure the email format matches one of the three supported types
 - Check the console output for parsing errors
+
+## How to Export an mbox File from Common Email Apps
+
+To use this program, you need to export your Skyscanner price alert emails as an mbox file. Here are guides for the most common email clients:
+
+### Apple Mail (macOS)
+1. Select the mailbox or folder containing your Skyscanner emails.
+2. Go to `Mailbox` > `Export Mailbox...` in the menu bar.
+3. Choose a destination and save. The exported file will be in mbox format.
+4. Rename the file to `mbox` and place it in the `Skyscanner.mbox` folder in this project.
+
+### Mozilla Thunderbird
+1. Install the "ImportExportTools NG" add-on (if not already installed).
+2. Right-click the folder containing your Skyscanner emails.
+3. Select `ImportExportTools NG` > `Export folder`.
+4. Choose `mbox` format and save the file.
+5. Rename and move the file as above.
+
+### Microsoft Outlook (Windows/Mac)
+Outlook does not natively export to mbox. You can:
+- Forward your Skyscanner emails to a Gmail account and use Gmail's export (see below)
+- Or use a third-party tool to convert PST/OST to mbox
+
+### Gmail (Web)
+1. Go to Google Takeout: https://takeout.google.com/
+2. Select only "Mail" and choose the label/folder with your Skyscanner emails.
+3. Export and download the archive.
+4. Extract the archive; the mail will be in mbox format.
+5. Rename and move the file as above.
+
+### General Tips
+- Always filter or move your Skyscanner emails to a dedicated folder before export for best results.
+- After export, ensure the file is named `mbox` and placed inside the `Skyscanner.mbox` directory in this project.
+- If you have trouble, search for "export mbox from [your email app]" for more detailed instructions.
